@@ -1,0 +1,156 @@
+% PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc} % font encoding
+\usepackage{graphicx} % for figures
+\usepackage{float} % for figures
+\usepackage{indentfirst} % indent first paragraph of section
+\usepackage{soul,xcolor} % for colors
+\usepackage{xkcdcolors} % colors from XKCD color survey
+\usepackage{mathtools} % for boxed equations within \align
+\usepackage{sectsty} % adjust section headers
+\usepackage{fancyhdr} % page headers
+\usepackage{titling} % reference title,author,date (in fancyhdr page header)
+\usepackage{breqn} % automatically line wrap long Eqs.
+\usepackage{pdfpages} % for \includepdf
+\usepackage{pdflscape} % landscape 
+\usepackage{mdframed} % for framed environment
+\usepackage{minted} % for syntax-highlighted code blocks
+\usepackage{inconsolata} % better monospace font
+\usepackage[letterpaper, total={6.5in, 9in}]{geometry} % set paper and margin size
+\usepackage{empheq} % multiline boxed equations, etc.
+\usepackage{hyperref} % hyperlinked references?
+\usepackage{dsfont}	% gives you \mathds{} font
+% \usepackage{enumerate} % custom enumerate numbering (or lettering in this case)
+\usepackage[shortlabels]{enumitem} % more enumerate options
+\usepackage{svg} % use inkscape to import svgs
+\usepackage{bm} % bold symbols
+\usepackage[parfill]{parskip} % replace indentation with paragraph spacing
+\usepackage{nicematrix} % extended matrix features
+\usepackage{nomencl} % nomenclature section
+\usepackage{etoolbox} % nomenclature subsections among other things
+
+% FORMATTING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% add page headers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,LO]{\thetitle}
+\fancyhead[RE,RO]{\theauthor}
+\fancyfoot[CE,CO]{\thepage}
+
+% adjust section header font size
+\sectionfont{\fontsize{20}{15}\selectfont}
+\subsectionfont{\fontsize{14}{15}\selectfont}
+
+
+% LISTINGS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% set code block formats
+\definecolor{code_bg}{gray}{0.95}
+\definecolor{console_bg}{gray}{1.00}
+\setminted{
+    bgcolor=code_bg,
+    fontsize=\small,
+    linenos,
+    autogobble}
+\setminted[python-console]{
+    bgcolor=console_bg,
+    linenos=false
+    }
+
+% NOMENCLATURE TABLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{A}{Acronyms}{%
+  \ifstrequal{#1}{S}{Symbols}{%
+  \ifstrequal{#1}{N}{Notation}{}}}%
+]}
+
+% MATH MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% real and imaginary components
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+% Fourier transforms
+% \newcommand\fourier[1]{\frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty #1 e^{-i\omega x} \textrm{d}x}
+% \newcommand\inverseFourier[1]{\frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty #1 e^{i\omega x} \textrm{d}\omega}
+\newcommand\fourier[1]{\int_{-\infty}^\infty #1 e^{-i\omega x} \textrm{d}x}
+\newcommand\inverseFourier[1]{\frac{1}{2\pi} \int_{-\infty}^\infty #1 e^{i\omega x} \textrm{d}\omega}
+
+% derivatives
+\newcommand{\ppf}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pppf}[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
+\newcommand{\ddf}[2]{\frac{\text{d} #1}{\text{d} #2}}
+\newcommand{\DDf}[2]{\frac{\text{D} #1}{\text{D} #2}}
+
+% norms
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+% statistical operators
+\newcommand{\prob}{\operatorname{P}}
+\newcommand{\expectation}{\operatorname{E}}
+\newcommand{\variance}{\operatorname{Var}}
+\newcommand{\stddev}{\operatorname{SD}}
+
+% statistical distributions
+\newcommand{\bernoulli}{\operatorname{Bernoulli}}
+\newcommand{\binomial}{\operatorname{Binomial}}
+\newcommand{\poisson}{\operatorname{Poisson}}
+\newcommand{\normal}{\operatorname{Normal}}
+
+% hyperbolic trig inverse functions
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arcCot}
+\DeclareMathOperator{\arccsc}{arcCsc}
+\DeclareMathOperator{\arccosh}{arcCosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arcCsch}
+\DeclareMathOperator{\arccoth}{arcCoth} 
+
+% highlighting in math mode
+\newcommand{\mathhl}[1]{\colorbox{yellow}{$\displaystyle #1$}}
+
+% COMMONLY USED COPYPASTAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% CODE BLOCK
+
+% \begin{listing}[H]
+%     \caption{Code and output}
+%     \label{lst1}
+%     \begin{minted}{python}
+%         import numpy as np
+%         A = np.array([1, 2, 3])
+%         print('Hello World')
+%     \end{minted}
+%     \begin{minted}{python-console}
+%         Hello World
+%     \end{minted}
+% \end{listing}
+
+% \inputminted{python}{helloworld.py}
+
+
+
+%% MULTIPLE EQUATIONS BOXED
+
+% \begin{empheq}[box=\fbox]{align}
+% \end{empheq}
+
+
+
+%% ENUMERTATE WITH a) instead of 1.
+
+% \begin{enumerate}[label=\alph*)]
+% \end{enumerate}
+
+
+
+%% SET CURRENT SUBHEADER NUMBER
+
+% \setcounter{subsection}{1}

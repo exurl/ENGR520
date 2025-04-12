@@ -1,0 +1,54 @@
+Please submit your response in a single pdf on Gradescope
+
+Links to an external site.. 
+
+We're starting the quarter by thinking through each step of setting up a physics-informed machine learning problem. In this homework, we ask you to choose one scenario from those below, and to take your best shot at planning how you would go about finding a model or solving a problem. We know that physics-informed methods may be new to you, so answer based on what you learn in the Foundations of Physics-Informed ML videos, and what you know from other classes or your own experience. You will be graded based on providing well-reasoned answers that cover all the aspects we ask for, rather than "correct" answers about what approach to take. 
+
+Suggested submission length: 800-1500 words, or roughly 2-4 pages. 
+
+Please choose one of the following scenarios. 
+
+    Build a climate model that will be used to forecast weather. 
+    Build a classifier that can detect defects in a manufactured part: 
+        using images (for example void detection in a cast part from CT scans)
+        OR using electromagnetic induced sound waves, created by EMAT (Electromagnetic Acoustic Transducer)
+    Discover a new metallic alloy with a low thermal expansion coefficient that is suitable for use in composite tooling (can be used as a mold for carbon fiber parts that must be heated in an oven or autoclave) 
+    Create a dynamics model of a wheeled robot that can later be used for model predictive control
+    Optimize the shape of a wind turbine blade to balance structural, power generation, and manufacturing considerations. 
+
+New options, from student suggestions:
+
+    Develop a model that monitors and predicts degradation in flight control electronic components, such as actuator controllers and power distribution units, by integrating sensor data with physics-based degradation models.
+    Build a protein folding model that will be used to predict the stability of antibodies in E.coli.
+    Design an acoustic metamaterial with tailored sound absorption properties for use in building applications
+    Build a model to find neurological conditions and cognitive stimuli from MRI Data
+
+Step 1: Choosing what to model. 
+
+        What is the goal? Be specific by expanding on the given scenario.
+        Define the problem. Is this a modeling problem you can represent as y  = f(x)? If so, what do y, x, and f represent? Or is there a different basic equation that captures the main goal? (you may expand on this later, in steps 3-5)
+        What physics would you like to capture in the model? A specific PDE or ODE? A certain physical law?
+        Why is machine learning a useful tool for this problem?
+        How will the model be used? Are there additional constraints or goals associated with how it will be used?
+
+Step 2: Curate the data.
+
+    We often wish we had more experimental data that we have. What are some ways you can leverage knowledge about physics in this problem to take the best advantage of limited data?
+    What coordinate system will you use, and why? Or put another way, what are the states, variables, or features in your problem? Do you have to be careful about how zero is defined for any of the states, features, or variables?
+    Take your best guess on whether you’d be working with simulated data, experimental data, or both. In this imagined scenario, what are the pros and cons of each type of data, both from a curation standpoint, and a machine learning perspective?
+    What other limitations might your imagined data set have? Could the data be biased towards certain cases? In what ways or cases would you be interpolating vs extrapolating? Are there events or cases that will be rare or poorly represented in your data, but important for real-world use?
+
+Steps 3: Choose an architecture. 
+
+    Based on what you’ve learned so far, in this class and other classes, take your best guesses for these next questions, and most importantly, explain your rationale. 
+    What general architecture or modeling method might you use, and why? 
+    What are your initial ideas on how to build physics knowledge into either the architecture or the loss function?
+    How do your choices affect the interpretability and generalizability of your model?
+
+Steps 4 & 5: Choosing a loss function and optimization method
+
+    How will optimization be used in this scenario? 
+    What is an optimization algorithm or approach that would be a good match for your problem, and why?
+    What loss function might you use, and why?
+    How messy or non-convex do you think your cost landscape will be, and why?
+    Are there any constraints? In particular, do you have any constraints related to the physics of the problem?
